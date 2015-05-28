@@ -2,8 +2,6 @@
 import sys
 import MySQLdb
 
-# sys.path.append("/var/www/tornado/")
-# import settings
 import logging
 app_log = logging.getLogger("tornado")
 
