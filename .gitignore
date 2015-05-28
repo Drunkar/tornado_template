@@ -1,0 +1,8 @@
+
+*.npyc
+*.pyc
+uploads/*
+static/tmp/*
+
+
+!.gitkeep
