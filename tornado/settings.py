@@ -1,5 +1,4 @@
 import logging
-import tornado
 import tornado.template
 import os
 from tornado.options import define, options
@@ -20,7 +19,7 @@ TEMPLATE_ROOT = path(ROOT, 'templates')
 
 
 settings = {}
-settings['debug'] = True
+settings['debug'] = options.debug
 settings['static_path'] = MEDIA_ROOT
 settings['template_loader'] = tornado.template.Loader(TEMPLATE_ROOT)
 settings['cookie_secret'] = "your-cookie-secret"
@@ -38,7 +37,7 @@ logger.setLevel(LOG_LEVEL)
 
 app_log = logging.getLogger("tornado")
 app_log_handler = logging.handlers.RotatingFileHandler(
-                    path('/log/app.log'),
+                    path(os.path.abspath(os.path.dirname(os.path.dirname(__file__))), "logs", "app.log"),
                     maxBytes=50000000, backupCount=5)
 app_log_handler.setLevel(LOG_LEVEL)
 app_log_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s %(message)s'))
@@ -47,3 +46,4 @@ app_log.addHandler(app_log_handler)
 
 if options.config:
     tornado.options.parse_config_file(options.config)
+ 

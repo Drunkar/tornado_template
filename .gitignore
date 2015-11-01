@@ -1,8 +1,8 @@
 
 *.npyc
 *.pyc
-uploads/*
-static/tmp/*
+tornado/uploads/*
+tornado/static/tmp/*
 
 
 !.gitkeep
